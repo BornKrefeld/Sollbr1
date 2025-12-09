@@ -215,7 +215,7 @@ blockquote cite {
   animation: open-from-center 1.5s ease-out forwards; 
   
   /* NEU: Zeitverzögerung von 4 Sekunden hinzufügen! */
-  animation-delay: 3s 
+  animation-delay: 1s 
   
   /* Korrektur des Übergangs für den Hover-Zustand, damit 
      keine Transition-Verzögerung angewendet wird, wenn die 
@@ -235,4 +235,5 @@ blockquote cite {
     -webkit-clip-path: inset(0% 0% 0% 0%);
     clip-path: inset(0% 0% 0% 0%);
   }
+
 }
