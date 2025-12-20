@@ -1,240 +1,279 @@
-  /* Der Selektor zielt auf das <body>-Element */
+/* ========================================================================= */
+/* 1. GRUNDEINSTELLUNGEN & TYPOGRAPHIE (GELTEN FÜR ALLE GERÄTE) */
+/* ========================================================================= */
 
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    /* Wichtig: Stellt sicher, dass Padding und Border nicht die Gesamtbreite ändern */
+    box-sizing: border-box; 
+    line-height: 1.6; /* Verbessert die Lesbarkeit */
+    background-color: #ffffff;
+    color: #333333;
+}
+
+/* Globales Box-Sizing für alle Elemente */
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+/* Alle Bilder sollten sich an ihren Container anpassen */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
 
 /* Header/logo Title */
 .header {
-  padding: 60px;
-  text-align: center;
-  background:rgb(0,255,0);
-  }
-
-.navbar {
-  background-color: #333; /* Dunkler Hintergrund */
-  overflow: hidden; /* Verhindert Probleme mit Floats */
-  border-radius: 8px; /* Abgerundete Ecken */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Sanfter Schatten */
-  padding: auto;
+    padding: 60px 20px;
+    text-align: center;
+    background: rgb(0, 255, 0); /* Knallgrün */
+    color: #333;
 }
 
-.navbar a {
-  float: left; /* Links nebeneinander */
-  display: block; /* Für die volle Größe des Links */
-  color: white; /* Weiße Textfarbe */
-  text-align: center; /* Text zentrieren */
-  padding: 14px 20px; /* Abstände innen */
-  text-decoration: none; /* Unterstreichung entfernen */
-  font-family: Arial, sans-serif; /* Moderne Schriftart */
-  font-size: 17px;
-  transition: background-color 0.3s ease; /* Übergang für Hover-Effekt */
-}
-
-.navbar a:hover {
-  background-color: #575757; /* Dunklerer Hintergrund beim Überfahren */
-}
-
-/* Optional: Styling für den aktiven Link */
-.navbar a.active {
-  background-color: #04AA6D;
-}
-
-/* Style the body */
-body {
-  font-family: Arial;
-  margin: 0;
-}
-
-
-
-/* Der Selektor zielt auf alle Überschriften der Ebene 1 */
+/* Hauptüberschrift 1: Große Titel */
 h1 {
-  /* Die Eigenschaft 'color' (Textfarbe) wird auf blau gesetzt */
-  text-align: center;
-  font-size: 36px;
-  padding: auto;
-  border-color: hsl(160, 59, 16);
-  background-color: #333;
-  color: white;
-  }
+    text-align: center;
+    font-size: 36px;
+    padding: 15px 20px;
+    background-color: #333;
+    color: white;
+    margin: 0 0 30px 0; /* Abstand nach unten */
+}
 
-h2  {
-  color: rgb(123, 18, 193);
-  background-color: rgb(0,150,150);
-  text-align: center;
-  font-size: 40px;
-  padding: 30;
-  border: solid rgb(0, 0, 0), 3px;
-  margin: 20px;
-  width: 90%;
+/* Überschrift 2: Abschnittsüberschrift (Styling angepasst für bessere Lesbarkeit) */
+h2 {
+    color: #7b12c1; /* Violetter Farbton */
+    background-color: rgb(0, 150, 150);
+    text-align: center;
+    font-size: 30px; /* Auf 30px reduziert für Mobilgeräte */
+    padding: 15px; /* Korrigiert: Einheit hinzugefügt */
+    border: 3px solid rgb(0, 0, 0); /* Korrigiert: Syntax korrigiert */
+    margin: 30px 10px 20px 10px;
+    width: auto; /* Breite nicht beschränken */
 }
 
 h3 {
-  color: rgb(17, 120, 50);
-  text-align: left;
-  font-size: 28px;
-  padding: 20px;
+    color: rgb(17, 120, 50);
+    text-align: left;
+    font-size: 24px; /* Etwas kleiner */
+    padding: 10px 0;
 }
 
-/* Der Selektor zielt auf alle <p>-Elemente */
+/* Absätze */
 p {
-  /* Die Eigenschaft 'font-size' wird auf 16 Pixel gesetzt */
-  font-size: 24px;
-  /* Die Eigenschaft 'line-height' wird auf 1.5 gesetzt, was den Zeilenabstand definiert */
-  line-height: 1.5;
-  max-width: 600px;
+    font-size: 18px; /* Standardgröße für gute Lesbarkeit */
+    line-height: 1.6;
+    max-width: 700px; /* Maximale Breite für bessere Lesbarkeit auf Desktop */
+    margin: 15px auto; /* Zentrieren auf Desktop */
+    padding: 0 10px;
 }
 
-/* Stile für die ungeordnete Liste (Container) */
+/* ========================================================================= */
+/* 2. NAVIGATION (NAVBAR) */
+/* ========================================================================= */
+
+.navbar {
+    background-color: #333;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 0; /* Entfernt ungültiges 'auto' */
+}
+
+.navbar a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-size: 17px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar a:hover {
+    background-color: #575757;
+}
+
+.navbar a.active {
+    background-color: #04AA6D;
+}
+
+/* ========================================================================= */
+/* 3. LAYOUT & CONTENT BLOCKS */
+/* ========================================================================= */
+
+/* Content Container: Nutzt Grid für Desktop */
+.content-container {
+    display: grid;
+    /* 50% / 50% Aufteilung für Desktop-Ansicht */
+    grid-template-columns: 1fr 1fr; 
+    gap: 30px;
+    padding: 20px;
+    align-items: start; /* Stellt sicher, dass die Blöcke oben ausgerichtet sind */
+}
+
+.text-block {
+    padding: 10px;
+}
+
+/* Bild-Block: Standardmäßig 100% Breite des Grid-Containers */
+.image-block {
+    display: flex; /* Zum Zentrieren des Bildes */
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+/* ========================================================================= */
+/* 4. LISTE UND ZITAT */
+/* ========================================================================= */
+
 ul {
-  list-style-type: none; 
-  padding: 0; 
-  
-  /* NEU: Entfernt die Zentrierung */
-  margin: 0; 
-  
-  /* HINWEIS: Optional, aber stellt sicher, dass die Liste die gesamte 
-     verfügbare Breite des Elternelements einnimmt. */
-  width: 100%; 
+    list-style-type: none;
+    padding: 0 10px;
+    margin: 0;
+    max-width: 700px;
 }
 
-/* Stile für die Listenelemente (die einzelnen Prinzipien) */
-li {    
-  font-family: Arial, sans-serif; 
-  font-size: 1.2em; 
-  line-height: 1.6;
-  text-align: left;
-  
-  /* WICHTIG: Die Listenelemente sollen sich an die UL-Breite anpassen */
-  width: auto; 
-  
-  margin-bottom: 12px; 
-  padding: 15px 20px; 
-  
-  /* Stil-Definitionen beibehalten */
-  border: 1px solid #90EE90; 
-  border-left: 6px solid #3CB371; 
-  border-radius: 8px; 
-  background-color: #F0FFF0; 
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); 
+li {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 12px;
+    padding: 15px 20px;
+    border: 1px solid #90EE90;
+    border-left: 6px solid #3CB371;
+    border-radius: 8px;
+    background-color: #F0FFF0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
-/* Optional: Fügen Sie ein stilvolles Aufzählungszeichen (Bullet Point) hinzu */
 li::before {
-  content: "🌿"; /* Ein Natur-Emoji als Bullet Point */
-  margin-right: 10px;
-  font-size: 1.1em;
-  color: #3CB371;
+    content: "🌿";
+    margin-right: 10px;
+    font-size: 1.1em;
+    color: #3CB371;
 }
-
 
 blockquote {
-  /* Box-Model und Abstände */
-  margin: 30px 0;
-  padding: 15px 20px 15px 35px; /* Viel Platz für die linke Linie/Zitate */
-  
-  /* Visuelle Unterscheidung */
-  background-color: #fafafa;
-  border-left: 8px solid #33aaff; /* Breite, farbige Linie */
-  border-radius: 4px; /* Abgerundete Ecken */
-  
-  /* Typografie */
-  font-family: Georgia, serif;
-  font-style: italic;
-  font-size: 1.2em;
-  color: #444;
+    margin: 30px 10px;
+    padding: 15px 20px 15px 35px;
+    background-color: #fafafa;
+    border-left: 8px solid #33aaff;
+    border-radius: 4px;
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 1.2em;
+    color: #444;
 }
 
-/* Optional: Styling für die Quelle (falls <cite> innerhalb von <blockquote> verwendet wird) */
 blockquote cite {
-  display: block;
-  margin-top: 10px;
-  font-style: normal; /* Normaler Stil für die Quelle */
-  font-size: 0.9em;
-  color: #666;
-  text-align: right;
+    display: block;
+    margin-top: 10px;
+    font-style: normal;
+    font-size: 0.9em;
+    color: #666;
+    text-align: right;
 }
+
 /* Footer */
 .footer {
-  padding: 20px;
-  text-align: center;
-  background: #ddd;
-}
-
-
-
-/* Der übergeordnete Container mit Grid-Layout */
-.content-container {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  gap: 20px;
     padding: 20px;
-    
-    
+    text-align: center;
+    background: #ddd;
+    margin-top: 40px;
+    border-top: 1px solid #ccc;
 }
 
-/* Stil für das p-Element, um einen Rand hinzuzufügen */
-.text-block p {
-  /* Fügt 15px Rand rund um den Absatz hinzu */
-  margin-top: 15px;
-  margin-bottom: 15px;
-  object-fit: contain;
-  /* Oder spezifischer, z.B. nur oben und unten */
-  /* margin-top: 15px; */
-  /* margin-bottom: 15px; */
+/* ========================================================================= */
+/* 5. RESPONSIVE DESIGN (MEDIA QUERIES) */
+/* ========================================================================= */
 
+/* Gilt für Bildschirme mit einer Breite von maximal 768px (Tablets und Smartphones) */
+@media (max-width: 768px) {
+    
+    /* Layout: Wechsel von 2 Spalten auf 1 Spalte */
+    .content-container {
+        grid-template-columns: 1fr; /* Eine einzige Spalte, nimmt die ganze Breite ein */
+        gap: 20px;
+        padding: 10px;
+    }
+    
+    /* Navigation: Links werden untereinander angeordnet */
+    .navbar a {
+        float: none;
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 12px 0;
+    }
+
+    /* Header Padding reduzieren */
+    .header {
+        padding: 30px 10px;
+    }
+
+    /* Schriftgrößen auf Mobilgeräten etwas reduzieren */
+    h1 {
+        font-size: 28px;
+    }
+    h2 {
+        font-size: 24px;
+    }
+    h3 {
+        font-size: 20px;
+    }
+    p {
+        font-size: 16px;
+        max-width: 100%; /* Text darf die volle Breite des Containers nutzen */
+    }
 }
 
-/* 1. Initialer Zustand (Bild ist noch 'geschlossen') */
+
+/* ========================================================================= */
+/* 6. BILD ANIMATIONEN (Unverändert, aber im neuen Kontext) */
+/* ========================================================================= */
+
+/* Stile für das Bild in der Desktop-Ansicht (Animationseffekte) */
 .image-block img {
-  /* Grundlegende Stile beibehalten */
-  margin-top: 10px;
-  width: 80%;
-  height: auto;
-  padding: 20px;
-  box-sizing: border-box;
-  object-fit: contain;
-  border: 3px solid rgb(0, 255, 0);
-  border-radius: 12px;
-  
-  /* Wichtig: Kein animation-Eintrag hier! */
-  
-  /* Startzustand: Bild ist vollständig verdeckt (Mitte) */
-  -webkit-clip-path: inset(50% 50% 50% 50%);
-  clip-path: inset(50% 50% 50% 50%);
-  
-  /* Fügt eine Transition hinzu, damit die Animation beim Verlassen
-     des :hover-Zustands sanft zurückkehrt (optional, aber empfohlen). 
-     Wir verwenden clip-path, um es animierbar zu machen. */
-  transition: clip-path 0s linear 4s; 
-  -webkit-transition: -webkit-clip-path 0s linear 4s; 
-}
-
-/* 2. Zustand beim Hover (Animation startet) */
-/* Die Animation wird ausgelöst, wenn der Benutzer über den Elter-Container (.image-block) fährt. */
-.image-block:hover img {
-  /* Animation starten, wenn gehovert wird */
-  animation: open-from-center 1.5s ease-out forwards; 
-  
-  /* NEU: Zeitverzögerung von 4 Sekunden hinzufügen! */
-  animation-delay: 1s 
-  
-  /* Korrektur des Übergangs für den Hover-Zustand, damit 
-     keine Transition-Verzögerung angewendet wird, wenn die 
-     Animation startet. */
-  transition: none;
-}
-
-/* 3. Definition der Animation (bleibt unverändert) */
-@keyframes open-from-center {
-  0% {
+    /* Grundlegende Stile */
+    margin-top: 10px;
+    width: 80%; /* Etwas kleiner im Grid-Container, da zentriert */
+    height: auto;
+    padding: 20px;
+    border: 3px solid rgb(0, 255, 0);
+    border-radius: 12px;
+    
+    /* Startzustand: Bild ist vollständig verdeckt (Mitte) */
     -webkit-clip-path: inset(50% 50% 50% 50%);
     clip-path: inset(50% 50% 50% 50%);
-  }
-  
-  /* Endzustand: Bild vollständig sichtbar */
-  100% {
-    -webkit-clip-path: inset(0% 0% 0% 0%);
-    clip-path: inset(0% 0% 0% 0%);
-  }
-
 }
 
+.image-block:hover img {
+    /* Animation starten, wenn gehovert wird (Desktop) */
+    animation: open-from-center 1.5s ease-out forwards;
+    animation-delay: 1s;
+}
+
+@keyframes open-from-center {
+    0% {
+        -webkit-clip-path: inset(50% 50% 50% 50%);
+        clip-path: inset(50% 50% 50% 50%);
+    }
+    100% {
+        -webkit-clip-path: inset(0% 0% 0% 0%);
+        clip-path: inset(0% 0% 0% 0%);
+    }
+}
+
+/* WICHTIG: Animation auf Touch-Geräten deaktivieren, da Hover nicht zuverlässig ist */
+@media (hover: none) and (pointer: coarse) {
+    .image-block img {
+        /* Setzt den Clip-Path sofort auf sichtbar für Touchscreens */
+        clip-path: inset(0% 0% 0% 0%);
+        -webkit-clip-path: inset(0% 0% 0% 0%);
+        animation: none;
+    }
+}
